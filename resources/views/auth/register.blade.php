@@ -28,28 +28,28 @@
                                 <span class="sp-color">Sign Up</span>
                                 <h2>Create an Account!</h2>
                             </div>
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="post" action="{{ route('register') }}">
                                 @csrf
 
                                 <div class="row">
                                     <div class="col-lg-12 ">
                                         <div class="form-group">
                                             <input type="text" name="name" id="name" class="form-control"
-                                                required data-error="Please enter your Username" placeholder="Username">
+                                                 required data-error="Please enter your Username" placeholder="Username">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="email" name="email" id="email" class="form-control"
-                                                required data-error="Please enter email" placeholder="Email">
+                                                 data-error="Please enter email" placeholder="Email">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="password" name="password" id="password" class="form-control"
-                                                required autocomplete="new-password" placeholder="Enter Your Password Here">
+                                                 autocomplete="new-password" placeholder="Enter Your Password Here">
                                         </div>
                                     </div>
 

@@ -29,16 +29,36 @@
                                 <i class='bx bx-envelope'></i>
                                 <a href="mailto:hello@atoli.com">hello@atoli.com</a>
 
-                                <i class='bx bxs-user-pin'></i>
-                                <a href="{{ route('login') }}">Login</a>
+                                @auth
+
+
+                                <li>
+                                    <i class='bx bxs-user-pin'></i>
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                </li>
+
+                                <li>
+                                    <i class='bx bxs-user-rectangle'></i>
+                                    <a href="{{ route('user.logout') }}">Logout</a>
+                                </li>
+                            @else
+                                <li>
+                                    <i class='bx bxs-user-rectangle'></i>
+                                    <a href="{{ route('register') }}">Register</a>
+                                </li>
+
+                                <li> <i class='bx bxs-user-pin'></i>
+                                    <a href="{{ route('login') }}">Login</a>
+                                </li>
+
+                            @endauth
+
+
                             </li>
 
 
 
-                            <li>
-                                <i class='bx bxs-user-rectangle'></i>
-                                <a href="{{ route('register') }}">Register</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

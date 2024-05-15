@@ -30,6 +30,12 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
     <!-- toastr CSS -->
 
+    	<!-- dataTables CSS -->
+   <link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
+   <!-- dataTables CSS -->
+
+
+
 	<title>Admin Dashboard</title>
 </head>
 
@@ -87,6 +93,11 @@
 	</script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{asset('backend/assets/js/code.js')}}"></script>
+<script src="{{asset('backend/assets/js/validate.min.js')}}"></script>
+
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
@@ -107,6 +118,70 @@
     break;
  }
  @endif
+</script>
+
+
+<!--datatable JS-->
+<script src="{{asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+<!--datatable JS-->
+
+
+   {{-- validation js --}}
+
+   <script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                name: {
+                    required : true,
+                },
+                postion: {
+                    required : true,
+                },
+                facebook: {
+                    required : true,
+                },
+                image: {
+                    required : true,
+                },
+
+            },
+            messages :{
+                name: {
+                    required : 'Please Enter Team Name',
+                },
+                postion: {
+                    required : 'Please Enter Team Postion',
+                },
+                facebook: {
+                    required : 'Please Enter Facebook Url',
+                },
+                image: {
+                    required : 'Please Select Image',
+                },
+
+
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+
 </script>
 </body>
 
