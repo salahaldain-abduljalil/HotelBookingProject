@@ -37,6 +37,8 @@
                                             <input type="text" name="name" id="name" class="form-control"
                                                  required data-error="Please enter your Username" placeholder="Username">
                                         </div>
+                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
                                     </div>
 
                                     <div class="col-lg-12">
@@ -44,6 +46,8 @@
                                             <input type="email" name="email" id="email" class="form-control"
                                                  data-error="Please enter email" placeholder="Email">
                                         </div>
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
                                     </div>
 
                                     <div class="col-lg-12">
@@ -51,6 +55,8 @@
                                             <input type="password" name="password" id="password" class="form-control"
                                                  autocomplete="new-password" placeholder="Enter Your Password Here">
                                         </div>
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
                                     </div>
 
                                     <div class="col-12">
@@ -58,6 +64,8 @@
                                             <input class="form-control" type="password" id="password_confirmation"
                                                 name="password_confirmation" placeholder="Password">
                                         </div>
+                                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 text-center">

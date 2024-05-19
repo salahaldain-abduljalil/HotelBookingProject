@@ -10,13 +10,6 @@
 
 
 
-  @include('frontend.home.services')
-
-
-    @include('frontend.home.team')
-
-
-
 @include('frontend.home.testimonials')
 
     @include('frontend.home.faq')
@@ -87,5 +80,12 @@
             </div>
         </div>
         <!-- Banner Form Area End -->
+
+
+        @include('frontend.home.team')
+
+        @include('frontend.home.services')
+
+
 
 @endsection

@@ -41,6 +41,9 @@
                                                 required data-error="Please enter your Username or Email"
                                                 placeholder="Email/Name/Phone">
                                         </div>
+                                        <x-input-error :messages="$errors->get('login')" class="mt-2" />
+
+                                        </div>
 
 
                                         <div class="col-12">
@@ -48,6 +51,8 @@
                                                 <input class="form-control" id="password" type="password" name="password"
                                                     placeholder="Password">
                                             </div>
+                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
                                         </div>
 
                                         <div class="col-lg-6 col-sm-6 form-condition">
