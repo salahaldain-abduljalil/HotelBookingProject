@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\Teamcontroller;
+use App\Http\Controllers\FrontEndRoomController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -100,6 +102,16 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/delete/roomno/{id}', 'DeleteRoomNumber')->name('delete.roomno');
         Route::get('/delete/room/{id}', 'DeleteRoom')->name('delete.room');
     });
+
+
+});  //End Admin group middleware.
+
+
+ /// Room All Route
+ Route::controller(FrontEndRoomController::class)->group(function(){
+
+    Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
+    Route::get('/room/details/{id}', 'RoomDetailsPage');
 
 
 });

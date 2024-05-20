@@ -78,7 +78,7 @@
 
                 <div class="col-lg-6">
                     <div class="faq-img-3">
-                        <img src="{{asset('frontend/assets')}}/img/faq/faq-img3.jpg" alt="Images">
+                        <img src="{{asset('frontend/assets')}}/img/faq/faq-img3.jpg" alt="Not Found">
                     </div>
                 </div>
             </div>
