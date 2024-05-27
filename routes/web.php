@@ -130,6 +130,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
         Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
         Route::match(['get', 'post'], '/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
+        Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
+
     });
 
 
@@ -153,7 +155,7 @@ Route::middleware(['auth'])->group(function () {
  Route::controller(RoomListController::class)->group(function(){
 
     Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
-
-
+    Route::get('/add/room/list', 'AddRoomList')->name('add.room.list');
+    Route::post('/store/roomlist', 'StoreRoomList')->name('store.roomlist');
 });
 });
