@@ -128,11 +128,13 @@ class TeamController extends Controller
 
     //================Book Area Methods.
 
-    public function BookArea(){
+    public function BookArea()
+    {
 
         $book = BookArea::find(1);
-        return view('backend.bookarea.book_area',compact('book'));
+        return view('backend.bookarea.book_area', compact('book'));
     }
+
 
 
     public function BookAreaUpdate(Request $request){
@@ -163,10 +165,7 @@ class TeamController extends Controller
             return redirect()->back()->with($notification);
 
 
-        }
-        //here to update without image;
-
-        else {
+        } else {
 
             BookArea::findOrFail($book_id)->update([
 
@@ -185,5 +184,4 @@ class TeamController extends Controller
 
         } // End Eles
     } // End Method
-
 }

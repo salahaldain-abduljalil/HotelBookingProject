@@ -1,13 +1,17 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\backend\Teamcontroller;
+use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\FrontEndRoomController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -81,7 +85,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(Teamcontroller::class)->group(function () {
 
         Route::get('/book/area/', 'BookArea')->name('book.area');
-        Route::post('/book/area/update/', 'BookAreaUpdate')->name('book.area.update');
+        Route::post('/book/area/update', 'BookAreaUpdate')->name('book.area.update');
     });
 
     //=====Room Typle All Routes.
@@ -102,16 +106,54 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/delete/roomno/{id}', 'DeleteRoomNumber')->name('delete.roomno');
         Route::get('/delete/room/{id}', 'DeleteRoom')->name('delete.room');
     });
-
-
 });  //End Admin group middleware.
 
 
- /// Room All Route
- Route::controller(FrontEndRoomController::class)->group(function(){
+/// Room All Route
+Route::controller(FrontEndRoomController::class)->group(function () {
 
     Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
     Route::get('/room/details/{id}', 'RoomDetailsPage');
+    Route::get('/bookings/', 'BookingSeach')->name('booking.search');
+    Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
+    Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
+});
 
 
+// Auth Middleware User must have login for access this route
+Route::middleware(['auth'])->group(function () {
+
+    /// CHECKOUT ALL Route
+    Route::controller(BookingController::class)->group(function () {
+
+        Route::get('/checkout/', 'Checkout')->name('checkout');
+        Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
+        Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
+        Route::match(['get', 'post'], '/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
+    });
+
+
+    /// Admin Booking All Route
+    Route::controller(BookingController::class)->group(function () {
+
+        Route::get('/booking/list', 'BookingList')->name('booking.list');
+        Route::get('/edit_booking/{id}', 'EditBooking')->name('edit_booking');
+        // booking Update
+        Route::post('/update/booking/status/{id}', 'UpdateBookingStatus')->name('update.booking.status');
+        Route::post('/update/booking/{id}', 'UpdateBooking')->name('update.booking');
+
+        // Assign Room Route
+        Route::get('/assign_room/{id}', 'AssignRoom')->name('assign_room');
+        Route::get('/assign_room/store/{booking_id}/{room_number_id}', 'AssignRoomStore')->name('assign_room_store');
+        Route::get('/assign_room_delete/{id}', 'AssignRoomDelete')->name('assign_room_delete');
+
+    });
+
+     /// Admin Room List All Route
+ Route::controller(RoomListController::class)->group(function(){
+
+    Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
+
+
+});
 });

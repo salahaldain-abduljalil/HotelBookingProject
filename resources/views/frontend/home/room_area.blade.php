@@ -1,5 +1,5 @@
 @php
-    $room = App\Models\Room::where('id','roomtype_id')->latest()->limit(4)->get();
+    $room = App\Models\Room::latest()->limit(4)->get();
 @endphp
 
 <!-- Room Area -->
@@ -12,53 +12,53 @@
         <div class="row pt-45">
 
             @foreach ($room as $item)
-            <div class="col-lg-6">
-                <div class="room-card-two">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-4 p-0">
-                            <div class="room-card-img">
-                                <a href="room-details.html">
-                                    <img src="{{ asset('uploads/roomimg/' . $item->image) }}" alt="Images">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-8 p-0">
-                            <div class="room-card-content">
-                                <h3>
-                                    {{-- <a href="room-details.html">{{ $item->type->name }}</a> --}}
-                                </h3>
-                                <span>{{ $item->price }} / Per Night </span>
-                                <div class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
+                <div class="col-lg-6">
+                    <div class="room-card-two">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 col-md-4 p-0">
+                                <div class="room-card-img">
+                                    <a href="{{ url('room/details/' . $item->id) }}">
+                                        <img src="{{ asset('uploads/roomimg/' . $item->image) }}" alt="Images">
+                                    </a>
                                 </div>
-                                <p>{{ $item->short_desc }}</p>
-                                <ul>
+                            </div>
+
+                            <div class="col-lg-7 col-md-8 p-0">
+                                <div class="room-card-content">
+                                    <h3>
+                                        <a
+                                            href="{{ url('room/details/' . $item->id) }}">{{ $item->type->name ?? 'SINGLE PREMIUM' }}</a>
+                                    </h3>
+                                    <span>{{ $item->price }} / Per Night </span>
+                                    <div class="rating">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                                    <p>{{ $item->short_desc }}</p>
+                                    <ul>
 
 
 
-                                    <li><i class='bx bx-user'></i> {{ $item->room_capacity }} Person</li>
-                                    <li><i class='bx bx-expand'></i> {{ $item->size }}ft2</li>
-                                </ul>
+                                        <li><i class='bx bx-user'></i> {{ $item->room_capacity }} Person</li>
+                                        <li><i class='bx bx-expand'></i> {{ $item->size }}ft2</li>
+                                    </ul>
 
-                                <ul>
-                                    <li><i class='bx bx-show-alt'></i>{{ $item->view }}</li>
-                                    <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
-                                </ul>
+                                    <ul>
+                                        <li><i class='bx bx-show-alt'></i>{{ $item->view }}</li>
+                                        <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
+                                    </ul>
 
-                                <a href="room-details.html" class="book-more-btn">
-                                    Book Now
-                                </a>
+                                    <a href="room-details.html" class="book-more-btn">
+                                        Book Now
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
             @endforeach
         </div>
     </div>
