@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\BookConfirm;
 use App\Models\BookArea;
 use App\Models\Booking;
 use App\Models\BookingRoomList;
@@ -16,6 +17,7 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 use Stripe\Charge;
@@ -210,6 +212,23 @@ class BookingController extends Controller
         $booking->status = $request->status;
         $booking->save();
 
+
+           /// Start Sent Email
+
+           $sendmail = Booking::find($id);
+
+           $data = [
+               'check_in' => $sendmail->check_in,
+               'check_out' => $sendmail->check_out,
+               'name' => $sendmail->name,
+               'email' => $sendmail->email,
+               'phone' => $sendmail->phone,
+           ];
+
+           Mail::to($sendmail->email)->send(new BookConfirm($data));
+
+           /// End Sent Email
+
         $notification = array(
             'message' => 'Information Updated Successfully',
             'alert-type' => 'success'
@@ -324,6 +343,24 @@ class BookingController extends Controller
 
 
      public function DownloadInvoice($id){
+
+        $editData = Booking::with('room')->find($id);
+        $pdf = Pdf::loadView('backend.booking.booking_invoice',compact('editData'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+     }// End Method
+
+     public function UserBooking(){
+        $id = Auth::user()->id;
+        $allData = Booking::where('user_id',$id)->orderBy('id','desc')->get();
+        return view('frontend.dashboard.user_booking',compact('allData'));
+
+     }// End Method
+
+     public function UserInvoice($id){
 
         $editData = Booking::with('room')->find($id);
         $pdf = Pdf::loadView('backend.booking.booking_invoice',compact('editData'))->setPaper('a4')->setOption([

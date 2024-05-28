@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\RoomListController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\backend\Teamcontroller;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\FrontEndRoomController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -132,6 +134,11 @@ Route::middleware(['auth'])->group(function () {
         Route::match(['get', 'post'], '/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
         Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
 
+
+        ////////// User Booking Route..
+
+        Route::get('/user/booking', 'UserBooking')->name('user.booking');
+        Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
     });
 
 
@@ -148,14 +155,23 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/assign_room/{id}', 'AssignRoom')->name('assign_room');
         Route::get('/assign_room/store/{booking_id}/{room_number_id}', 'AssignRoomStore')->name('assign_room_store');
         Route::get('/assign_room_delete/{id}', 'AssignRoomDelete')->name('assign_room_delete');
-
     });
 
-     /// Admin Room List All Route
- Route::controller(RoomListController::class)->group(function(){
+    /// Admin Room List All Route
+    Route::controller(RoomListController::class)->group(function () {
 
-    Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
-    Route::get('/add/room/list', 'AddRoomList')->name('add.room.list');
-    Route::post('/store/roomlist', 'StoreRoomList')->name('store.roomlist');
-});
+        Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
+        Route::get('/add/room/list', 'AddRoomList')->name('add.room.list');
+        Route::post('/store/roomlist', 'StoreRoomList')->name('store.roomlist');
+    });
+
+
+
+    /// Admin Room List All Route
+    Route::controller(SettingController::class)->group(function () {
+
+        Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+        Route::post('/smtp/update', 'SmtpUpdate')->name('smtp.update');
+
+    });
 });
