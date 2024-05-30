@@ -5,6 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!--favicon-->
     <link rel="icon" href="{{ asset('backend/assets') }}/images/favicon-32x32.png" type="image/png" />
     <!--plugins-->
@@ -185,14 +188,14 @@
 
         {{-- we take this editor library by tiny.cloud website to make full Editor in Easy way --}}
 
-        {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
         <script>
             tinymce.init({
                 selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
                 plugins: 'powerpaste advcode table lists checklist',
                 toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
             });
-        </script> --}}
+        </script>
 </body>
 
 </html>
