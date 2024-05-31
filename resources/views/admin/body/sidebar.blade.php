@@ -170,33 +170,47 @@
             </ul>
 
 
-            <li>
-                <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                    </div>
-                    <div class="menu-title">Hotel Gallery </div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('all.gallery') }}"><i class='bx bx-radio-circle'></i>All Gallery </a>
-                    </li>
-
-                </ul>
-            </li>
-
-
-
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Hotel Gallery </div>
+            </a>
             <ul>
-
-
-                <li class="menu-label">Others</li>
-
-                <li>
-                    <a href="#" target="_blank">
-                        <div class="parent-icon"><i class="bx bx-support"></i>
-                        </div>
-                        <div class="menu-title">Support</div>
-                    </a>
+                <li> <a href="{{ route('all.gallery') }}"><i class='bx bx-radio-circle'></i>All Gallery </a>
                 </li>
+
             </ul>
-            <!--end navigation-->
+        </li>
+
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Contact Message </div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('contact.message') }}"><i class='bx bx-radio-circle'></i>Contact Message </a>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+        <ul>
+
+
+            <li class="menu-label">Others</li>
+
+            <li>
+                <a href="#" target="_blank">
+                    <div class="parent-icon"><i class="bx bx-support"></i>
+                    </div>
+                    <div class="menu-title">Support</div>
+                </a>
+            </li>
+        </ul>
+        <!--end navigation-->
 </div>

@@ -1,6 +1,9 @@
 @extends('frontend.master')
 
 @section('content')
+
+
+
     <!-- Banner Area -->
     <div class="banner-area" style="height: 480px;">
         <div class="container">

@@ -78,7 +78,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="room.html" class="nav-link">
+                            <a href="{{ route('contact.us') }}" class="nav-link">
                                 Contact
                             </a>
                         </li>

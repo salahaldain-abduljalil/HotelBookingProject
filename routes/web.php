@@ -137,6 +137,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/update/gallery', 'UpdateGallery')->name('update.gallery');
         Route::get('/delete/gallery/{id}', 'DeleteGallery')->name('delete.gallery');
         Route::post('/delete/gallery/multiple', 'DeleteGalleryMultiple')->name('delete.gallery.multiple');
+
+        // contact message admin view
+        Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
     });
 });  //End Admin group middleware.
 
@@ -269,4 +272,8 @@ Route::controller(CommentController::class)->group(function () {
 Route::controller(GalleryController::class)->group(function () {
 
     Route::get('/gallery', 'ShowGallery')->name('show.gallery');
+
+    // Contact All Route
+    Route::get('/contact', 'ContactUs')->name('contact.us');
+    Route::post('/store/contact', 'StoreContactUs')->name('store.contact');
 });
