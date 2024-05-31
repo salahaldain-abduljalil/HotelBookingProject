@@ -103,6 +103,9 @@
                 <li> <a href="{{ route('smtp.setting') }}"><i class='bx bx-radio-circle'></i>SMTP Setting</a>
                 </li>
 
+                <li> <a href="{{ route('site.setting') }}"><i class='bx bx-radio-circle'></i>Site Setting</a>
+                </li>
+
 
             </ul>
         </li>
@@ -141,7 +144,6 @@
 
             </ul>
         </li>
-        
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
@@ -152,25 +154,49 @@
                 <li> <a href="{{ route('all.comment') }}"><i class='bx bx-radio-circle'></i>All Comments </a>
                 </li>
 
-
-
-
             </ul>
         </li>
 
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Booking Report </div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('booking.report') }}"><i class='bx bx-radio-circle'></i>Booking Report </a>
+                </li>
 
-        <ul>
+            </ul>
 
-
-            <li class="menu-label">Others</li>
 
             <li>
-                <a href="#" target="_blank">
-                    <div class="parent-icon"><i class="bx bx-support"></i>
+                <a class="has-arrow" href="javascript:;">
+                    <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
                     </div>
-                    <div class="menu-title">Support</div>
+                    <div class="menu-title">Hotel Gallery </div>
                 </a>
+                <ul>
+                    <li> <a href="{{ route('all.gallery') }}"><i class='bx bx-radio-circle'></i>All Gallery </a>
+                    </li>
+
+                </ul>
             </li>
-        </ul>
-        <!--end navigation-->
+
+
+
+            <ul>
+
+
+                <li class="menu-label">Others</li>
+
+                <li>
+                    <a href="#" target="_blank">
+                        <div class="parent-icon"><i class="bx bx-support"></i>
+                        </div>
+                        <div class="menu-title">Support</div>
+                    </a>
+                </li>
+            </ul>
+            <!--end navigation-->
 </div>

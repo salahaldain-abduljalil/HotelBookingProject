@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CommentController;
+use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\backend\Teamcontroller;
@@ -14,6 +16,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -105,6 +109,34 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/update/roomno/{id}', 'UpdateRoomNumber')->name('update.roomno');
         Route::get('/delete/roomno/{id}', 'DeleteRoomNumber')->name('delete.roomno');
         Route::get('/delete/room/{id}', 'DeleteRoom')->name('delete.room');
+    });
+
+
+
+    /// Booking Report All Route
+    Route::controller(ReportController::class)->group(function () {
+        Route::get('/booking/report/', 'BookingReport')->name('booking.report');
+        Route::post('/search-by-date', 'SearchByDate')->name('search-by-date');
+    });
+
+    /// Site Setting All Route
+    Route::controller(SettingController::class)->group(function () {
+
+        Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+        Route::post('/site/update', 'SiteUpdate')->name('site.update');
+    });
+
+
+    /// Gallery All Route
+    Route::controller(GalleryController::class)->group(function () {
+
+        Route::get('/all/gallery', 'AllGallery')->name('all.gallery');
+        Route::get('/add/gallery', 'AddGallery')->name('add.gallery');
+        Route::post('/store/gallery', 'StoreGallery')->name('store.gallery');
+        Route::get('/edit/gallery/{id}', 'EditGallery')->name('edit.gallery');
+        Route::post('/update/gallery', 'UpdateGallery')->name('update.gallery');
+        Route::get('/delete/gallery/{id}', 'DeleteGallery')->name('delete.gallery');
+        Route::post('/delete/gallery/multiple', 'DeleteGalleryMultiple')->name('delete.gallery.multiple');
     });
 });  //End Admin group middleware.
 
@@ -215,23 +247,26 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/blog/details/{slug}', 'BlogDetails');
     Route::get('/blog/cat/list/{id}', 'BlogCatList');
     Route::get('/blog', 'BlogList')->name('blog.list');
-
 });
 
 
 
 /// Frontend Comment All Route
-Route::controller(CommentController::class)->group(function(){
+Route::controller(CommentController::class)->group(function () {
 
     Route::post('/store/comment/', 'StoreComment')->name('store.comment');
-
-
 });
 
 
 /// Frontend Comment All Route
-Route::controller(CommentController::class)->group(function(){
+Route::controller(CommentController::class)->group(function () {
     Route::get('/all/comment/', 'AllComment')->name('all.comment');
     Route::post('/update/comment/status', 'UpdateCommentStatus')->name('update.comment.status');
 });
 
+
+/// Frontend Gallery All Route
+Route::controller(GalleryController::class)->group(function () {
+
+    Route::get('/gallery', 'ShowGallery')->name('show.gallery');
+});
