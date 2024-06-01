@@ -24,7 +24,7 @@
         <div class="container">
 
             <form role="form" method="post" action="{{ route('checkout.store') }}" class="stripe_form require-validation"
-                data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_SECRET') }}">
+                data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
                 @csrf
                 <div class="row">
                     <div class="col-lg-8">

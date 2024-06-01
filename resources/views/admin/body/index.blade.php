@@ -159,7 +159,7 @@
         var ctx = document.getElementById('bookingChart').getContext('2d');
         var bookings = @json($bookings);
 
-        // Extract the required data from the bookings
+        // Extract the required data from the bookings  Model.
         var labels = bookings.map(function(booking) {
             return booking.check_in;
         });

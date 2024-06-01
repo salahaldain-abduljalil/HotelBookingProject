@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CommentController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\backend\Teamcontroller;
@@ -16,6 +17,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -141,6 +143,18 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         // contact message admin view
         Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
     });
+
+     /// Gallery All Route
+ Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/permission', 'AllPermission')->name('all.permission');
+    Route::get('/add/permission', 'AddPermission')->name('add.permission');
+    Route::post('/store/permission', 'StorePermission')->name('store.permission');
+    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+});
 });  //End Admin group middleware.
 
 
@@ -276,4 +290,11 @@ Route::controller(GalleryController::class)->group(function () {
     // Contact All Route
     Route::get('/contact', 'ContactUs')->name('contact.us');
     Route::post('/store/contact', 'StoreContactUs')->name('store.contact');
+});
+
+
+/// Notification All Route
+Route::controller(BookingController::class)->group(function () {
+
+    Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
 });
