@@ -7,10 +7,6 @@
         <div class="container">
             <div class="main-body">
                 <div class="row">
-
-
-
-
                     <div class="card">
                         <div class="card-body">
                             <ul class="nav nav-tabs nav-primary" role="tablist">
@@ -161,7 +157,7 @@
                                                     <div class="col-md-12">
                                                         {{-- to make the editor by tiny.cloud website --}}
                                                         <label for="input11" class="form-label"> Description </label>
-                                                        <textarea name="description" class="form-control" id="tiny">{{ $editData->description }}</textarea>
+                                                        <textarea name="description" class="form-control" id="myeditorinstance">{{ $editData->description }}</textarea>
                                                     </div>
 
                                                     <div class="row mt-2">
@@ -182,14 +178,14 @@
                                                                                 <option value="Complimentary Breakfast"
                                                                                     {{ $item->facility_name ==
                                                                                     'Complimentary
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Breakfast'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Breakfast'
                                                                                         ? 'selected'
                                                                                         : '' }}>
                                                                                     Complimentary Breakfast</option>
                                                                                 <option value="32/42 inch LED TV"
                                                                                     {{ $item->facility_name ==
                                                                                     'Complimentary
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Breakfast'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Breakfast'
                                                                                         ? 'selected'
                                                                                         : '' }}>
                                                                                     32/42 inch LED TV</option>
@@ -201,7 +197,7 @@
                                                                                 <option value="Minibar"
                                                                                     {{ $item->facility_name ==
                                                                                     'Complimentary
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Breakfast'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Breakfast'
                                                                                         ? 'selected'
                                                                                         : '' }}>
                                                                                     Minibar</option>
@@ -237,7 +233,7 @@
                                                                                 <option value="Laundry & Dry Cleaning"
                                                                                     {{ $item->facility_name ==
                                                                                     'Laundry & Dry
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Cleaning'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Cleaning'
                                                                                         ? 'selected'
                                                                                         : '' }}>
                                                                                     Laundry & Dry Cleaning</option>
@@ -245,7 +241,7 @@
                                                                                 <option value="Electronic door lock"
                                                                                     {{ $item->facility_name ==
                                                                                     'Electronic door
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    lock'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        lock'
                                                                                         ? 'selected'
                                                                                         : '' }}>
                                                                                     Electronic door lock</option>
@@ -348,11 +344,6 @@
                                         </div>
 
                                     </div>
-
-
-
-
-
                                 </div>
                                 {{-- // End primaryhome --}}
 

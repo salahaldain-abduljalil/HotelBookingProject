@@ -16,7 +16,7 @@
                                 </a>
                             </div>
                             <p>
-                                Aenean finibus convallis nisl sit amet hendrerit. Etiam blandit velit non lorem mattis, non ultrices eros bibendum .
+                            The Project Was Develop By Eng:SalahAldain Abduljalil.
                             </p>
                             <ul class="footer-list-contact">
                                 <li>
@@ -40,25 +40,25 @@
                             <h3>Links</h3>
                             <ul class="footer-list">
                                 <li>
-                                    <a href="about.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         About Us
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="services-1.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Services
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="team.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Team
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="gallery.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Gallery
                                     </a>
@@ -84,13 +84,13 @@
                             <h3>Useful Links</h3>
                             <ul class="footer-list">
                                 <li>
-                                    <a href="index.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="blog-1.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Blog
                                     </a>
@@ -102,19 +102,19 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Testimonials
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="gallery.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Gallery
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact.html" target="_blank">
+                                    <a href="#" target="_blank">
                                         <i class='bx bx-caret-right'></i>
                                         Contact Us
                                     </a>
@@ -127,8 +127,8 @@
                         <div class="footer-widget">
                             <h3>Newsletter</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Nullam tempor eget ante fringilla rutrum aenean sed venenatis .
+                                إلى المهتمين : تم إنجاز هذا الموقع لإدارة الحجوزات وهو مشروع متكامل يمكنك إستخدامه فإذا كنت مهتم وتريد إستخدام هذا الموقع تواصل معنا لعمل تخصيص تنسيقات ومحتويات الموقع إلى مايناسب مؤسستك
+
                             </p>
                             <div class="footer-form">
                                 <form class="newsletter-form" data-toggle="validator" method="POST">

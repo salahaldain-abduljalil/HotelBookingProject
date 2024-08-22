@@ -32,12 +32,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                Restaurant
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
                             <a href="{{ route('show.gallery') }}" class="nav-link">
                                 Gallery
                             </a>
@@ -67,7 +61,7 @@
                                 @foreach ($room as $item)
                                     <li class="nav-item">
                                         <a href="room.html" class="nav-link">
-                                            {{ $item['type']['name'] ?? 'QUEEN ROOM' }}
+                                            {{ @$item['type']['name']}}
 
                                         </a>
                                     </li>

@@ -6,12 +6,12 @@
             <div class="inner-title">
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="#">الصفحة الرئيسية</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
-                    <li>Sign In</li>
+                    <li>تسجيل الدخول</li>
                 </ul>
-                <h3>Sign In</h3>
+                <h3>تسجيل الدخول</h3>
             </div>
 
         </div>
@@ -26,8 +26,8 @@
                     <div class="user-all-form">
                         <div class="contact-form">
                             <div class="section-title text-center">
-                                <span class="sp-color">Sign In</span>
-                                <h2>Sign In to Your Account!</h2>
+                                <span class="sp-color">تسجيل الدخول</span>
+                                <h2> !تسجيل الدخول إلى حسابك</h2>
                             </div>
 
 
@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <input type="text" name="login" id="login" class="form-control"
                                                 required data-error="Please enter your Username or Email"
-                                                placeholder="Email/Name/Phone">
+                                                placeholder="إسم المستحدم/رقم الهاتف /البريد الألكتروني">
                                         </div>
                                         <x-input-error :messages="$errors->get('login')" class="mt-2" />
 
@@ -49,7 +49,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <input class="form-control" id="password" type="password" name="password"
-                                                    placeholder="Password">
+                                                    placeholder="كلمة المرور">
                                             </div>
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
@@ -59,26 +59,26 @@
                                             <div class="agree-label">
                                                 <input type="checkbox" id="chb1">
                                                 <label for="chb1">
-                                                    Remember Me
+                                                    قم بتذكيري
                                                 </label>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12 col-sm-12">
-                                            <a class="forget" href="{{ route('password.request') }}">Forgot My
-                                                Password?</a>
+                                            <a class="forget" href="#">هل نسييت كلمة المرور؟
+                                                </a>
 
                                             <div class="col-lg-12 col-md-12 text-center">
                                                 <button type="submit"
                                                     class="default-btn btn-bg-three border-radius-5 form-control">
-                                                    Sign In Now
+                                                    تسجيل الدخول
                                                 </button>
                                             </div>
 
                                             <div class="col-12">
                                                 <p class="account-desc">
                                                     Not a Member?
-                                                    <a href="{{ route('register') }}">Sign Up</a>
+                                                    <a href="{{ route('register') }}">إنشاء جديد</a>
                                                 </p>
                                             </div>
                                         </div>

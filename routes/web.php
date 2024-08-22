@@ -17,12 +17,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
-
-
-
-
-
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,7 +67,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 Route::get('/admin/login', [AdminController::class, 'adminlogin'])->name('admin.login');
 
 
-//Team Department
+//Team Department.
 
 Route::middleware(['auth', 'roles:admin'])->group(function () {
 
@@ -80,8 +75,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
     Route::controller(Teamcontroller::class)->group(function () {
 
-        Route::get('/all/team', 'AllTeam')->name('all.team');
-        Route::get('/add/team', 'AddTeam')->name('add.team');
+        Route::get('/all/team', 'AllTeam')->name('all.team')->middleware('permission:team.all');
+        Route::get('/add/team', 'AddTeam')->name('add.team')->middleware('permission:team.add');
         Route::post('/team/store', 'StoreTeam')->name('team.store');
         Route::get('/edit/team/{id}', 'EditTeam')->name('edit.team');
         Route::post('/team/update', 'UpdateTeam')->name('team.update');
@@ -129,63 +124,53 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     });
 
 
-    /// Gallery All Route
-    Route::controller(GalleryController::class)->group(function () {
 
-        Route::get('/all/gallery', 'AllGallery')->name('all.gallery');
-        Route::get('/add/gallery', 'AddGallery')->name('add.gallery');
-        Route::post('/store/gallery', 'StoreGallery')->name('store.gallery');
-        Route::get('/edit/gallery/{id}', 'EditGallery')->name('edit.gallery');
-        Route::post('/update/gallery', 'UpdateGallery')->name('update.gallery');
-        Route::get('/delete/gallery/{id}', 'DeleteGallery')->name('delete.gallery');
-        Route::post('/delete/gallery/multiple', 'DeleteGalleryMultiple')->name('delete.gallery.multiple');
+    /// Permission All Route
+    Route::controller(RoleController::class)->group(function () {
 
-        // contact message admin view
-        Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::get('/add/permission', 'AddPermission')->name('add.permission');
+        Route::post('/store/permission', 'StorePermission')->name('store.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+        Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+        Route::get('/export', 'Export')->name('export');
+        Route::post('/import', 'Import')->name('import');
     });
 
-     /// Gallery All Route
- Route::controller(RoleController::class)->group(function(){
 
-    Route::get('/all/permission', 'AllPermission')->name('all.permission');
-    Route::get('/add/permission', 'AddPermission')->name('add.permission');
-    Route::post('/store/permission', 'StorePermission')->name('store.permission');
-    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
-    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
-    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+    /// Role All Route
+    Route::controller(RoleController::class)->group(function () {
 
-});
-});  //End Admin group middleware.
+        Route::get('/all/roles', 'AllRoles')->name('all.roles');
+        Route::get('/add/roles', 'AddRoles')->name('add.roles');
+        Route::post('/store/roles', 'StoreRoles')->name('store.roles');
+        Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
+        Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+        Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
+    });
 
+    ///Admin user All Route.
+    Route::controller(AdminController::class)->group(function () {
 
-/// Room All Route
-Route::controller(FrontEndRoomController::class)->group(function () {
-
-    Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
-    Route::get('/room/details/{id}', 'RoomDetailsPage');
-    Route::get('/bookings/', 'BookingSeach')->name('booking.search');
-    Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
-    Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
-});
-
-
-// Auth Middleware User must have login for access this route
-Route::middleware(['auth'])->group(function () {
-
-    /// CHECKOUT ALL Route
+        Route::get('all/admin', 'Alladmin')->name('all.admin');
+        Route::get('add/admin', 'AddAdmin')->name('add.admin');
+        Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
+        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
+        Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
+        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+    });
+    /// Notification All Route
     Route::controller(BookingController::class)->group(function () {
 
-        Route::get('/checkout/', 'Checkout')->name('checkout');
-        Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
-        Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
-        Route::match(['get', 'post'], '/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
-        Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
-
-
-        ////////// User Booking Route..
-
-        Route::get('/user/booking', 'UserBooking')->name('user.booking');
-        Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
+        Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
     });
 
 
@@ -254,20 +239,54 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
         Route::get('/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
     });
+
+    /// Gallery All Route
+    Route::controller(GalleryController::class)->group(function () {
+
+        Route::get('/all/gallery', 'AllGallery')->name('all.gallery');
+        Route::get('/add/gallery', 'AddGallery')->name('add.gallery');
+        Route::post('/store/gallery', 'StoreGallery')->name('store.gallery');
+        Route::get('/edit/gallery/{id}', 'EditGallery')->name('edit.gallery');
+        Route::post('/update/gallery', 'UpdateGallery')->name('update.gallery');
+        Route::get('/delete/gallery/{id}', 'DeleteGallery')->name('delete.gallery');
+        Route::post('/delete/gallery/multiple', 'DeleteGalleryMultiple')->name('delete.gallery.multiple');
+
+        // contact message admin view
+        Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
+    });
+});  //End Admin group middleware.
+
+
+/// Room All Route
+Route::controller(FrontEndRoomController::class)->group(function () {
+
+    Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
+    Route::get('/room/details/{id}', 'RoomDetailsPage');
+    Route::get('bookings', 'BookingSeach')->name('booking.search');
+    Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
+    Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
 });
 
 
+// Auth Middleware User must have login for access this route
+Route::middleware(['auth'])->group(function () {
 
-/// Frontend Blog  All Route
-Route::controller(BlogController::class)->group(function () {
+    /// CHECKOUT ALL Route
+    Route::controller(BookingController::class)->group(function () {
 
-    Route::get('/blog/details/{slug}', 'BlogDetails');
-    Route::get('/blog/cat/list/{id}', 'BlogCatList');
-    Route::get('/blog', 'BlogList')->name('blog.list');
+        Route::get('/checkout/', 'Checkout')->name('checkout');
+        Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
+        Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
+        Route::match(['get', 'post'], '/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
+        Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
+
+
+        ////////// User Booking Route..
+
+        Route::get('/user/booking', 'UserBooking')->name('user.booking');
+        Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
+    });
 });
-
-
-
 /// Frontend Comment All Route
 Route::controller(CommentController::class)->group(function () {
 
@@ -293,8 +312,10 @@ Route::controller(GalleryController::class)->group(function () {
 });
 
 
-/// Notification All Route
-Route::controller(BookingController::class)->group(function () {
+/// Frontend Blog  All Route
+Route::controller(BlogController::class)->group(function () {
 
-    Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
+    Route::get('/blog/details/{slug}', 'BlogDetails');
+    Route::get('/blog/cat/list/{id}', 'BlogCatList');
+    Route::get('/blog', 'BlogList')->name('blog.list');
 });

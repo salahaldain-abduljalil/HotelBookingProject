@@ -55,7 +55,7 @@ class SettingController extends Controller
             $image = $request->file('logo');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(110,44)->save('uploads/site/'.$name_gen);
-            $save_url = 'upload/site/'.$name_gen;
+            $save_url = 'uploads/site/'.$name_gen;
 
             SiteSetting::findOrFail($site_id)->update([
 

@@ -11,7 +11,7 @@
         <div class="row align-items-center pt-45">
             <div class="col-lg-6 col-md-6">
                 <div class="testimonials-img-two">
-                    <img src="{{ asset('frontend/assets') }}/img/testimonials/testimonials-img5.jpg" alt="Images">
+                    <img src="{{ asset('uploads/marebhotel.jpg') }}"  alt="Images">
                 </div>
             </div>
 

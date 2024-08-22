@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 text-secondary">Total Booking</p>
+                                <p class="mb-0 text-secondary">@lang('texts.Total Booking')</p>
                                 <h4 class="my-1 text-info">{{ count($bookings) }}</h4>
                                 <p class="mb-0 font-13">Today Sale: ${{ $todayprice }}</p>
                             </div>

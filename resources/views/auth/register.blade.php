@@ -6,12 +6,12 @@
             <div class="inner-title">
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="#">الرئيسية</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
-                    <li>Sign Up</li>
+                    <li>إنشاء حساب</li>
                 </ul>
-                <h3>Sign Up</h3>
+                <h3>إنشاء حساب</h3>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                         <div class="contact-form">
                             <div class="section-title text-center">
                                 <span class="sp-color">Sign Up</span>
-                                <h2>Create an Account!</h2>
+                                <h2>! إنشاء حساب</h2>
                             </div>
                             <form method="post" action="{{ route('register') }}">
                                 @csrf
@@ -35,7 +35,7 @@
                                     <div class="col-lg-12 ">
                                         <div class="form-group">
                                             <input type="text" name="name" id="name" class="form-control"
-                                                 required data-error="Please enter your Username" placeholder="Username">
+                                                 required data-error="Please enter your Username" placeholder="UserName">
                                         </div>
                                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
@@ -44,7 +44,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="email" name="email" id="email" class="form-control"
-                                                 data-error="Please enter email" placeholder="Email">
+                                                 data-error="Please enter email" placeholder="البريد الألكتروني">
                                         </div>
                                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
@@ -53,7 +53,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="password" name="password" id="password" class="form-control"
-                                                 autocomplete="new-password" placeholder="Enter Your Password Here">
+                                                 autocomplete="new-password" placeholder="كلمة المرور">
                                         </div>
                                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
@@ -62,7 +62,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <input class="form-control" type="password" id="password_confirmation"
-                                                name="password_confirmation" placeholder="Password">
+                                                name="password_confirmation" placeholder="تأكيد كلمة المرور">
                                         </div>
                                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
@@ -76,8 +76,8 @@
 
                                     <div class="col-12">
                                         <p class="account-desc">
-                                            Already have an account?
-                                            <a href="{{ route('login') }}">Sign In</a>
+                                            هل لديك حساب مسبقا قم بتسجيل الدحول؟
+                                            <a href="{{ route('login') }}">تسجيل الدخول</a>
                                         </p>
                                     </div>
                                 </div>

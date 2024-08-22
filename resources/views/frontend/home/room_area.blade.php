@@ -27,7 +27,7 @@
                                 <div class="room-card-content">
                                     <h3>
                                         <a
-                                            href="{{ url('room/details/' . $item->id) }}">{{ $item->type->name ?? 'SINGLE PREMIUM' }}</a>
+                                            href="{{ url('room/details/' . $item->id) }}">{{ @$item->type->name }}</a>
                                     </h3>
                                     <span>{{ $item->price }} / Per Night </span>
                                     <div class="rating">

@@ -28,24 +28,33 @@
                 <div class="menu-title">Manage Team</div>
             </a>
             <ul>
-                <li> <a href="{{ route('all.team') }}"><i class='bx bx-radio-circle'></i>All Team</a>
-                </li>
-                <li> <a href="{{ route('add.team') }}"><i class='bx bx-radio-circle'></i>Add Team</a>
-                </li>
+                @if (Auth::user()->can('team.all'))
+                    <li> <a href="{{ route('all.team') }}"><i class='bx bx-radio-circle'></i>All Team</a>
+                    </li>
+                @endif
+                @if (Auth::user()->can('team.add'))
+                    <li> <a href="{{ route('add.team') }}"><i class='bx bx-radio-circle'></i>Add Team</a>
+                    </li>
+                @endif
             </ul>
         </li>
+        @if (Auth::user()->can('bookarea.menu'))
 
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">Manage Book Area </div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('book.area') }}"><i class='bx bx-radio-circle'></i>Update BookArea </a>
-                </li>
-            </ul>
-        </li>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-category"></i>
+                    </div>
+                    <div class="menu-title">Manage Book Area </div>
+                </a>
+                <ul>
+                    @if (Auth::user()->can('bookarea.update'))
+                        <li> <a href="{{ route('book.area') }}"><i class='bx bx-radio-circle'></i>Update BookArea </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+
+        @endif
 
 
         <li>
@@ -200,6 +209,7 @@
 
         <li class="menu-label">Role & Permission </li>
 
+
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
@@ -209,24 +219,40 @@
             <ul>
                 <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All Permission </a>
                 </li>
+                <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>All Roles </a>
+                </li>
+                <li> <a href="{{ route('add.roles.permission') }}"><i class='bx bx-radio-circle'></i>Role In
+                        Permission </a>
+                </li>
+
+                <li> <a href="{{ route('all.roles.permission') }}"><i class='bx bx-radio-circle'></i>All Role In
+                        Permission </a>
+                </li>
 
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Manage Admin User</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.admin') }}"><i class='bx bx-radio-circle'></i>All Admin </a>
+                </li>
+                <li> <a href="{{ route('add.admin') }}"><i class='bx bx-radio-circle'></i>Add Admin</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-label">Others</li>
 
-
-
-        <ul>
-
-
-            <li class="menu-label">Others</li>
-
-            <li>
-                <a href="#" target="_blank">
-                    <div class="parent-icon"><i class="bx bx-support"></i>
-                    </div>
-                    <div class="menu-title">Support</div>
-                </a>
-            </li>
-        </ul>
-        <!--end navigation-->
+        <li>
+            <a href="#" target="_blank">
+                <div class="parent-icon"><i class="bx bx-support"></i>
+                </div>
+                <div class="menu-title">Support</div>
+            </a>
+        </li>
+    </ul>
+    <!--end navigation-->
 </div>
